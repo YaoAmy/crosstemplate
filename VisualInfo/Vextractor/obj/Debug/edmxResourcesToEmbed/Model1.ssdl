@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="htmlinfoModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="concept_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="concept" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="instance" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityType Name="original">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urlid" Type="int" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="1000" />
+    <Property Name="info" Type="varchar" MaxLength="10000" />
+    <Property Name="site" Type="varchar" MaxLength="10" />
+    <Property Name="doc" Type="longtext" />
+    <Property Name="mark" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="urltable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="mark" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="site" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="htmlinfoModelStoreContainer">
+    <EntitySet Name="concept_table" EntityType="Self.concept_table" Schema="htmlinfo" store:Type="Tables" />
+    <EntitySet Name="original" EntityType="Self.original" Schema="htmlinfo" store:Type="Tables" />
+    <EntitySet Name="urltable" EntityType="Self.urltable" Schema="htmlinfo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

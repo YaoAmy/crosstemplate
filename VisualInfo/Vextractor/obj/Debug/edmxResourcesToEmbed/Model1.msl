@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="htmlinfoModelStoreContainer" CdmEntityContainer="htmlinfoEntities">
+    <EntitySetMapping Name="concept_table">
+      <EntityTypeMapping TypeName="htmlinfoModel.concept_table">
+        <MappingFragment StoreEntitySet="concept_table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="concept" ColumnName="concept" />
+          <ScalarProperty Name="instance" ColumnName="instance" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="original">
+      <EntityTypeMapping TypeName="htmlinfoModel.original">
+        <MappingFragment StoreEntitySet="original">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="urlid" ColumnName="urlid" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="doc" ColumnName="doc" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urltable">
+      <EntityTypeMapping TypeName="htmlinfoModel.urltable">
+        <MappingFragment StoreEntitySet="urltable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="site" ColumnName="site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

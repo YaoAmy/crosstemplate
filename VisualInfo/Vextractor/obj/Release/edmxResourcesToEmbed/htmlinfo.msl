@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="htmlinfoModelStoreContainer" CdmEntityContainer="htmlinfoEntities1">
+    <EntitySetMapping Name="detailinfo">
+      <EntityTypeMapping TypeName="htmlinfoModel.detailinfo">
+        <MappingFragment StoreEntitySet="detailinfo">
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="vimglink" ColumnName="vimglink" />
+          <ScalarProperty Name="vnlink" ColumnName="vnlink" />
+          <ScalarProperty Name="nstext" ColumnName="nstext" />
+          <ScalarProperty Name="nltext" ColumnName="nltext" />
+          <ScalarProperty Name="nlink" ColumnName="nlink" />
+          <ScalarProperty Name="nparagraph" ColumnName="nparagraph" />
+          <ScalarProperty Name="len" ColumnName="len" />
+          <ScalarProperty Name="nimg" ColumnName="nimg" />
+          <ScalarProperty Name="nt" ColumnName="nt" />
+          <ScalarProperty Name="html" ColumnName="html" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urltable">
+      <EntityTypeMapping TypeName="htmlinfoModel.urltable">
+        <MappingFragment StoreEntitySet="urltable">
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

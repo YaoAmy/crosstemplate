@@ -1,0 +1,9 @@
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\bin\Debug\VisualInfo.exe.config
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\bin\Debug\VisualInfo.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\bin\Debug\VisualInfo.pdb
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.csprojResolveAssemblyReference.cache
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.Form1.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.Properties.Resources.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.csproj.GenerateResource.Cache
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\VisualInfo\obj\Debug\VisualInfo.pdb

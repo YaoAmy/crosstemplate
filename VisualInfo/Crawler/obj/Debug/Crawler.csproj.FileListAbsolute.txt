@@ -1,0 +1,9 @@
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\bin\Debug\Crawler.exe.config
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\bin\Debug\Crawler.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\bin\Debug\Crawler.pdb
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.Crawler.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.Properties.Resources.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.csproj.GenerateResource.Cache
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.pdb
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Crawler\obj\Debug\Crawler.csprojResolveAssemblyReference.cache

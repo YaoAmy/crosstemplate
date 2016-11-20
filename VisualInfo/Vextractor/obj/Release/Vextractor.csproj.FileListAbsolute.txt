@@ -1,0 +1,10 @@
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\bin\Release\Vextractor.exe.config
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\bin\Release\Vextractor.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\bin\Release\Vextractor.pdb
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\bin\Release\EntityFramework.dll
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\bin\Release\EntityFramework.xml
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\obj\Release\Vextractor.Form1.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\obj\Release\Vextractor.Properties.Resources.resources
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\obj\Release\Vextractor.csproj.GenerateResource.Cache
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\obj\Release\Vextractor.exe
+C:\Users\amy\Dropbox\expriment\visual\VisualInfo\Vextractor\obj\Release\Vextractor.pdb
