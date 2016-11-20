@@ -642,10 +642,15 @@ namespace Vextractor
 
         //______________________________________________________________________________________
         //                       分块部分
-        SelectCandidate selector = new selector();
+        SelectCandidate selector = new SelectCandidate();
+        //int originalid; //设置待匹配的概念节点的id
+        //private String getSample(int id) //从original表格中得到样本用于概念计算
+        //{
+        //    return;
+        //}
         private void Scoretor_Click(object sender, EventArgs e)
         {
-            this.webBrowser1.Navigate();
+            this.webBrowser1.Navigate("https://www.amazon.com/Unlocked-Android-MTK6572-Smartphone-598-0~1203-0MHz/dp/B016NX0C8M/ref=sr_1_3?ie=UTF8&qid=1463985735&sr=8-3&keywords=phone");
             partition_timer.Start();
 
         }
@@ -663,14 +668,22 @@ namespace Vextractor
                 {
                     if (ele.Children.Count == 0&&ele.TagName!= "SCRIPT" && ele.TagName != "NOSCRIPT" && ele.TagName != "STYLE" && ele.InnerText != null)
                     {
-                        i++;
+                        
                         //Console.WriteLine(ele.TagName);
                         //Console.WriteLine(i+"   "+ele.InnerText);
-                        candidateslist.Add(ele);
+                        if (Regex.Replace(ele.InnerText,"\\s+","").Length>20) //长度太小的直接不要,不需要做去脚本处理的原因为本身为叶子节点
+                        {
+                            candidateslist.Add(ele);
+                            i++;
+                        }
+                        
                     }
                    
                 }
-                Console.WriteLine(i);
+                Console.WriteLine("总共选出的节点数目"+i); //总共的后选节点数目；
+                selector.SetCandidate(candidateslist); //重新设置候选节点，每次调用会清除之前的候选节点
+                selector.select("FIGO Atrium 5.5 - Dual Micro SIM Unlocked 16GB Smartphone - US & International GSM 4G");  //根据sampleString来计算概念分。
+
 
             }
 

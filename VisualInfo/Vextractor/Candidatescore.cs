@@ -122,7 +122,7 @@ namespace Vextractor
         private List<String> getconbine(String temp)  //计算文本中含有的文本组合
         {
             List<String> snconbine = new List<String>();
-            
+            temp = Regex.Replace(temp, "[\\(\\)\\{\\}\\[\\]\\<\\>]", "");  //去除会导致异常的括号           
             temp = Regex.Replace(temp, @"\d+", "0");
             temp = Regex.Replace(temp, @"0.0", "0");
             temp = Regex.Replace(temp, ",", " ");

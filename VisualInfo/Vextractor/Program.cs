@@ -18,7 +18,7 @@ namespace Vextractor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //       Application.Run(new Form1());
+                   Application.Run(new Form1());
             //     String[] symbolsource = { "@", "%", "#", "¥", "$", "℃", "GB", "&", "gb", "mm", "-", "_" };
             // String temp = "Canon EOS Rebel T5 DSLR Camera with EF-S 18-55mm IS II & 75-300mm Zoom Lens and 32GB Accessory Bu";
             //String temp2 = "VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black";
