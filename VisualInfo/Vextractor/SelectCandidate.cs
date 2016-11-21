@@ -5,11 +5,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Collections;
 namespace Vextractor
 {
     class SelectCandidate
     {
+
         Dictionary<HtmlElement, double> candidates = new Dictionary<HtmlElement, double>();
         Candidatescore candscortor = new Candidatescore();
          
@@ -31,13 +32,9 @@ namespace Vextractor
             candscortor.setanchor(); 
             SetCandidate(leaf_nodes);
         }
-        public void select(String sampletext) //对candidate打分；
+        public IEnumerable<KeyValuePair<HtmlElement, double>> select(String sampletext,int num) //对candidate打分,num指返回排名前num的节点；
         {
-            DateTime beforDT = System.DateTime.Now;
-
-            //耗时巨大的代码  
-
-           
+            DateTime beforDT = System.DateTime.Now;            
             Console.Write("开始计算评分");
             int test = 0;
             Dictionary<String, int> sampleconcepts = Conceptprocess.getConcept(sampletext);
@@ -48,26 +45,30 @@ namespace Vextractor
                 test++;
                 Console.WriteLine("正在计算第"+test+"个");
                 double score = 0;  //当前节点评分
+                double combinescore = 0;
                 double parent_score = -1;  //父节点评分；
+             //   double parent_combinescore = -1;
                 HtmlElement current = key;  //当前节点
                 HtmlElement parent = current.Parent; //父节点
                 String temp = Regex.Replace(key.InnerText.Trim(), "\\s+", " ");  //当前节点文本
+               // temp = Regex.Replace(temp, @"\d* out of stars \d*", "") //除去干扰字符
                 double lenscore = candscortor.lenscore(temp, candscortor.getavglen());
-                Console.Write("节点：  "+ temp);
-                Console.WriteLine("长度得分"+lenscore);
-                
-                if (lenscore < 0.4) //过滤掉一些明显长度分过低的节点
-                {
-                    
+                combinescore = candscortor.computeScore(temp); //节点的组合分
+                //   Console.Write("节点：  "+ temp);
+                //    Console.WriteLine("长度得分"+lenscore);               
+                if (lenscore < 0.4||combinescore<1) //过滤掉一些明显长度分过低的节点，组合分过低的直接过滤
+                {             
                     candidates.Remove(key);
                 }
                 else
                 { //计算概念分一定要样本在前，待评节点在后，因为需要更具样本生成待评价节点概念向量
                     Dictionary<String, int> currentconcepts = Conceptprocess.getConcept(temp);
-                  //  Console.WriteLine("String:  " + temp);
-                 //   Console.WriteLine("概念词个数:  "+ currentconcepts.Count);
-                    score = candscortor.computeScore(temp)+ Conceptprocess.getConceptscore(sampleconcepts,currentconcepts);  //当前节点评分
-                //    Console.WriteLine("组合分1:  " + candscortor.computeScore(temp));
+                    //  Console.WriteLine("String:  " + temp);
+                    //   Console.WriteLine("概念词个数:  "+ currentconcepts.Count);
+                      // combinescore = candscortor.computeScore(temp);
+
+                       score = combinescore + Conceptprocess.getConceptscore(sampleconcepts,currentconcepts);  //当前节点评分
+                   // Console.WriteLine("组合分1:  " + combinescore);
                 //    Console.WriteLine("概念分1:  " + Conceptprocess.getConceptscore(sampleconcepts, currentconcepts));
                //     Console.WriteLine("111111得分:  " + score);
                     String parent_temp = null; //如果存在父节点则找出父节点文本；
@@ -136,28 +137,38 @@ namespace Vextractor
                         }
                         
                     } //跳出while循环时为说明current记录的节点大于父节点的打分；
-                    Console.WriteLine("总分" + score);
-                    if (candidates.ContainsKey(current))
-                    {
-                        candidates[current] = score;
-                    }
-                    else {
-                        candidates.Add(current, score);
-                        candidates.Remove(key);
-                    }                  
+                    Console.WriteLine("总分" + score);                   
+                        if (candidates.ContainsKey(current))
+                        {
+                            candidates[current] = score;
+                        }
+                        else {
+                            candidates.Add(current, score);
+                            candidates.Remove(key);
+                        }
+                      
                 }               
             }
-            DictonarySort(candidates);
+            var dicSort = (from objDic in candidates orderby objDic.Value descending select objDic).Take(num);
             DateTime afterDT = System.DateTime.Now;
             TimeSpan ts = afterDT.Subtract(beforDT);
             Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+            return dicSort;
         }
 
-        private void DictonarySort(Dictionary<HtmlElement, double> dic)
+        private void DictonarySortandSave(Dictionary<HtmlElement, double> dic,int num)
         {
-            var dicSort = from objDic in dic orderby objDic.Value descending select objDic;
-            foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
-                Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
+            IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = (from objDic in dic orderby objDic.Value descending select objDic).Take(num);
+            //try
+            //{//将结果存入数据库中
+
+            //    foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
+            //        Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
+            //}
+            //catch (UriFormatException)
+            //{
+
+            //}           
         }
        
     }

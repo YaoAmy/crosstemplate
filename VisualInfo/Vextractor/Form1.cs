@@ -569,7 +569,8 @@ namespace Vextractor
         }
         private void extract_timer_Tick(object sender, EventArgs e)
         {
-            if (count2 >= 1000) //count >=35仍然没有加载完成则直接取下一进行抽取
+            count2++;
+            if (count2 >= 35) //count >=35仍然没有加载完成则直接取下一进行抽取
             {
                 extract_timer.Stop();
                 Console.Out.WriteLine("此处记得添加解析不成功是的下一页代码");
@@ -644,35 +645,127 @@ namespace Vextractor
         //                       分块部分
         SelectCandidate selector = new SelectCandidate();
         //int originalid; //设置待匹配的概念节点的id
-        //private String getSample(int id) //从original表格中得到样本用于概念计算
-        //{
-        //    return;
-        //}
-        private void Scoretor_Click(object sender, EventArgs e)
-        {
-            this.webBrowser1.Navigate("https://www.amazon.com/Unlocked-Android-MTK6572-Smartphone-598-0~1203-0MHz/dp/B016NX0C8M/ref=sr_1_3?ie=UTF8&qid=1463985735&sr=8-3&keywords=phone");
-            partition_timer.Start();
+        int urltableid= 136323; //指定待评价的url的id，original中的id。是urltable中的(不含).
+        int urltableendid= 140145;
+        String scoresite; //注意site、mark不是original中的site。是urltable中的site
+        String scoremark;
+        int originalid=0;  //指定计算概念词的样本的id（第一个id不参与）；
+        int originalendid=404; //指定结束概念词计算的id；
+        int count3 = 0;//用于加载记数
+        String sampleString;
+        private void selecturl() {
+            urltableid++;
+            urltable ut = htmlpage.urltable.Find(urltableid);
+            if (urltableid > urltableendid)   //大于不包括需要抽取的节点时程序退出
+            {
+                Application.Exit();
+            }
+            if (ut != null)
+            {
+                count3 = 0;//解析下一页时，count3必须清零
+                scoresite = ut.site;               
+                scoremark = ut.mark;
+                nextSample(); //选择下一个待抽取页面的同时，取出比对样本。
+                Console.Out.WriteLine("解析的" + urltableid + "对应url：" + ut.url);
+                this.webBrowser1.Navigate(ut.url);             
+                partition_timer.Start(); //抽取timer启动；
+            }
+            else
+            {
+                urltableid++;  //如果该id对应的urltable元组不存在则记录抽取的extractid自增，抽取下一条；
+                selecturl();
+            }
 
         }
+        private void nextSample() //从original表格中得到样本用于概念计算,存放在类变量sampleString中;
+        {
+            originalid++;
+            original toriginal = htmlpage.original.Find(originalid);
+            if (originalid > originalendid)   //大于不包括需要抽取的节点时程序退出
+            {
+                Application.Exit();
+            }
+            if (toriginal != null)  //该originalid有对应的取值
+            {
+                sampleString = toriginal.info;
+                Console.Out.WriteLine("对照的样本  ：" + sampleString);
+            }
+            else
+            {
+                originalid++;  //如果该id对应的urltable元组不存在则记录抽取的extractid自增，抽取下一条；
+                nextSample();
+            }
+            
+        }
+        private String[] getTagandAttr(HtmlElement ele)
+        {
+            String[] temp=new String[4];
+            IHTMLElement e = (mshtml.IHTMLElement)ele.DomElement;
+            HtmlElement parent = ele.Parent;
+            HtmlElement firstchild = ele.FirstChild;
+            if (parent != null)
+            {
+                temp[0] = parent.TagName + " " + "class=" + parent.GetAttribute("className");
+            }
+            else {
+                temp[0] = "0";
+            }
+            temp[1] = ele.TagName+" "+"class="+ ele.GetAttribute("className");
+            if (firstchild != null)
+            {
+                temp[2] = firstchild.TagName + " " + "class=" + firstchild.GetAttribute("className");
+            }
+            else {
+                temp[2] = "0";
+            }
+            Match m = Regex.Match(ele.OuterHtml, @"\<.*?\>");
+            if (m.Success)
+            {
+                temp[3] = m.Value;
+            }
+            else {
+                temp[0] = "0";
+            }          
+         //   Console.WriteLine(Regex.Match(ele.OuterHtml, @"\<.*?\>"));           
+            return temp;
+        }
+        private void Scoretor_Click(object sender, EventArgs e)
+        {
+            selecturl();
+        }
+   
         private void partition_timer_Tick(object sender, EventArgs e)
         {
-           
-            if (this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
+            count3++;
+            if (count3 >= 35) //count >=35仍然没有加载完成则直接取下一进行抽取
+            {
+                partition_timer.Stop();
+                Console.Out.WriteLine("此处记得添加解析不成功是的下一页代码");
+                urltableid++;
+                selecturl();
+                return;
+
+            }
+            if (count3>2&&this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
             {
                 partition_timer.Stop();
                 Console.WriteLine(this.webBrowser1.Document.All.Count);
                 Console.WriteLine(this.webBrowser1.Document.Body.All.Count);
                 int i = 0;
                 List<HtmlElement> candidateslist = new List<HtmlElement>();
+                //   HtmlElementCollection elecollection = this.webBrowser1.Document.Body.All;
+                if (this.webBrowser1.Document.All.Count < 100) return;
                 foreach (HtmlElement ele in this.webBrowser1.Document.All)
                 {
                     if (ele.Children.Count == 0&&ele.TagName!= "SCRIPT" && ele.TagName != "NOSCRIPT" && ele.TagName != "STYLE" && ele.InnerText != null)
                     {
-                        
+                       
+
                         //Console.WriteLine(ele.TagName);
                         //Console.WriteLine(i+"   "+ele.InnerText);
                         if (Regex.Replace(ele.InnerText,"\\s+","").Length>20) //长度太小的直接不要,不需要做去脚本处理的原因为本身为叶子节点
                         {
+                            getTagandAttr(ele);
                             candidateslist.Add(ele);
                             i++;
                         }
@@ -682,9 +775,35 @@ namespace Vextractor
                 }
                 Console.WriteLine("总共选出的节点数目"+i); //总共的后选节点数目；
                 selector.SetCandidate(candidateslist); //重新设置候选节点，每次调用会清除之前的候选节点
-                selector.select("FIGO Atrium 5.5 - Dual Micro SIM Unlocked 16GB Smartphone - US & International GSM 4G");  //根据sampleString来计算概念分。
+                //Console.WriteLine("当前样本 ：" + sampleString);
+                IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = selector.select(sampleString, 10);  //根据sampleString来计算概念分。
+                
+                    foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
+                    {
+                    try
+                    {//将结果存入数据库中
+                     // Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
+                        String[] tag_attr = getTagandAttr(kvp.Key);
+                        scores scores_table = new scores();
+                        scores_table.urlid =urltableid;
+                        scores_table.originalid=originalid;
+                        scores_table.site =scoresite;
+                        scores_table.mark = scoremark;
+                        scores_table.info =HtmlElementprocess.getElementString(kvp.Key);
+                        scores_table.parent = tag_attr[0];
+                        scores_table.current =tag_attr[1];
+                        scores_table.firstchild =tag_attr[2];           
+                        scores_table.score=kvp.Value;
+                        scores_table.original_current =tag_attr[3];
+                        htmlpage.scores.Add(scores_table);
+                        htmlpage.SaveChanges();
+                    }
+                    catch (UriFormatException)
+                    {
 
-
+                    }
+                }
+                selecturl();
             }
 
         }

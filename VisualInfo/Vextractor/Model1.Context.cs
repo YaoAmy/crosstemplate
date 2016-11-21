@@ -25,8 +25,9 @@ namespace Vextractor
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<concept_table> concept_table { get; set; }
         public DbSet<original> original { get; set; }
         public DbSet<urltable> urltable { get; set; }
+        public DbSet<concept_table> concept_table { get; set; }
+        public DbSet<scores> scores { get; set; }
     }
 }

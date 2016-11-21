@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="htmlinfoModelStoreContainer" CdmEntityContainer="htmlinfoEntities">
-    <EntitySetMapping Name="concept_table">
-      <EntityTypeMapping TypeName="htmlinfoModel.concept_table">
-        <MappingFragment StoreEntitySet="concept_table">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="concept" ColumnName="concept" />
-          <ScalarProperty Name="instance" ColumnName="instance" />
-          <ScalarProperty Name="count" ColumnName="count" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="original">
       <EntityTypeMapping TypeName="htmlinfoModel.original">
         <MappingFragment StoreEntitySet="original">
@@ -31,6 +21,33 @@
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="mark" ColumnName="mark" />
           <ScalarProperty Name="site" ColumnName="site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="concept_table">
+      <EntityTypeMapping TypeName="htmlinfoModel.concept_table">
+        <MappingFragment StoreEntitySet="concept_table">
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="instance" ColumnName="instance" />
+          <ScalarProperty Name="concept" ColumnName="concept" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scores">
+      <EntityTypeMapping TypeName="htmlinfoModel.scores">
+        <MappingFragment StoreEntitySet="scores">
+          <ScalarProperty Name="originalid" ColumnName="originalid" />
+          <ScalarProperty Name="urlid" ColumnName="urlid" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="original_current" ColumnName="original_current" />
+          <ScalarProperty Name="firstchild" ColumnName="firstchild" />
+          <ScalarProperty Name="current" ColumnName="current" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

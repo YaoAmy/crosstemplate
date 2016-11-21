@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="htmlinfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="concept_table">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="concept" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="instance" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="count" Type="Int32" />
-  </EntityType>
   <EntityType Name="original">
     <Key>
       <PropertyRef Name="id" />
@@ -31,8 +22,34 @@
     <Property Name="site" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityContainer Name="htmlinfoEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="concept_table" EntityType="Self.concept_table" />
     <EntitySet Name="original" EntityType="Self.original" />
     <EntitySet Name="urltable" EntityType="Self.urltable" />
+    <EntitySet Name="concept_table" EntityType="htmlinfoModel.concept_table" />
+    <EntitySet Name="scores" EntityType="htmlinfoModel.scores" />
   </EntityContainer>
+  <EntityType Name="concept_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="concept" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="instance" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="count" Type="Int32" />
+  </EntityType>
+  <EntityType Name="scores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="site" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="mark" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="10000" FixedLength="false" Unicode="false" />
+    <Property Name="parent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="current" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="firstchild" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="original_current" Type="String" MaxLength="10000" FixedLength="false" Unicode="false" />
+    <Property Name="score" Type="Double" />
+    <Property Name="urlid" Type="Int32" />
+    <Property Name="originalid" Type="Int32" />
+  </EntityType>
 </Schema>

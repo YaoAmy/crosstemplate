@@ -34,16 +34,23 @@ namespace Vextractor
         }
 
         public void sourcesample() {
-            source.Add("VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black");
+            //source.Add("VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black");
+            //source.Add("Straight Talk Apple iPhone 5S 16GB 4G LTE Refurbished Prepaid Smartphone w/ Bonus $45 Service Plan");
+            //source.Add("AT&T EL51203 DECT 6.0 Phone with Caller ID/Call Waiting, 2 Cordless Handsets, Silver");
+            //source.Add("T-Mobile Samsung Galaxy S4 Prepaid Smartphone");
+            //source.Add("VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black");
+            //source.Add("FIGO Atrium 5.5 - Dual Micro SIM Unlocked 16GB Smartphone - US & International GSM 4G");
+            //source.Add("iPhone 7 Back Skin with Stick-up edges,HYAIZLZ(TM)Tire lines Carbon Fiber");
+            //source.Add("iPhone 7 Case, AiSpeed Premium TPU [Soft Series] Flexible Soft Transparent Clear Back");
+            //source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
+            // source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
+            source.Add("$399.00 Straight Talk Apple iPhone 6 Plus 16GB 4G LTE Prepaid Smartphone ");
             source.Add("Straight Talk Apple iPhone 5S 16GB 4G LTE Refurbished Prepaid Smartphone w/ Bonus $45 Service Plan");
-            source.Add("AT&T EL51203 DECT 6.0 Phone with Caller ID/Call Waiting, 2 Cordless Handsets, Silver");
-            source.Add("T-Mobile Samsung Galaxy S4 Prepaid Smartphone");
-            source.Add("VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black");
+            source.Add("$45.00 (Email Delivery) Straight Talk Monthly Plan Unlimited 30 Access Days $45 ");
             source.Add("FIGO Atrium 5.5 - Dual Micro SIM Unlocked 16GB Smartphone - US & International GSM 4G");
-            source.Add("iPhone 7 Back Skin with Stick-up edges,HYAIZLZ(TM)Tire lines Carbon Fiber");
-            source.Add("iPhone 7 Case, AiSpeed Premium TPU [Soft Series] Flexible Soft Transparent Clear Back");
-            source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
-           // source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
+            source.Add("$34.99 List price $37.68 Save $2.69 AT&T EL51203 DECT 6.0 Phone with Caller ID/Call Waiting, 2 Cordless Handsets, Silver ");
+            source.Add("$368.99 Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
+            source.Add("$749.00 Straight Talk Apple iPhone 6S Plus 16GB 4G LTE Prepaid Smartphone ");
         }
         public void computeAnchor()
         {
