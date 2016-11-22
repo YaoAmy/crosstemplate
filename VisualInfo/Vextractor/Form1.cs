@@ -673,6 +673,7 @@ namespace Vextractor
             else
             {
                 urltableid++;  //如果该id对应的urltable元组不存在则记录抽取的extractid自增，抽取下一条；
+                originalid--; //该url没有计算，所以sample不用下一条；
                 selecturl();
             }
 
@@ -785,18 +786,21 @@ namespace Vextractor
                      // Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
                         String[] tag_attr = getTagandAttr(kvp.Key);
                         scores scores_table = new scores();
-                        scores_table.urlid =urltableid;
-                        scores_table.originalid=originalid;
-                        scores_table.site =scoresite;
+                        scores_table.urlid = urltableid;
+                        scores_table.originalid = originalid;
+                        scores_table.site = scoresite;
                         scores_table.mark = scoremark;
-                        scores_table.info =HtmlElementprocess.getElementString(kvp.Key);
+                        scores_table.info = HtmlElementprocess.getElementString(kvp.Key);
                         scores_table.parent = tag_attr[0];
-                        scores_table.current =tag_attr[1];
-                        scores_table.firstchild =tag_attr[2];           
-                        scores_table.score=kvp.Value;
-                        scores_table.original_current =tag_attr[3];
+                        scores_table.current = tag_attr[1];
+                        scores_table.firstchild = tag_attr[2];
+                        scores_table.score = kvp.Value;
+                        scores_table.original_current = tag_attr[3];
                         htmlpage.scores.Add(scores_table);
                         htmlpage.SaveChanges();
+                        //  Console.WriteLine("样本的id： "+originalid);
+                        //  Console.WriteLine("样本： " + sampleString);
+
                     }
                     catch (UriFormatException)
                     {

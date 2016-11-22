@@ -56,9 +56,7 @@ namespace Vextractor
             //dic.Add("4", 0.8);
             //dic.Add("1",3400.23);
             //dic.Add("3", 1.45);
-            //dic.Add("2",1.5);
-            
-            
+            //dic.Add("2",1.5);       
             //var dicSort = from objDic in dic orderby objDic.Value descending select objDic;
             //foreach (KeyValuePair<String, double> kvp in dicSort)
             //    Console.WriteLine(kvp.Key + "：" + kvp.Value );
