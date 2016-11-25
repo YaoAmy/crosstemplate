@@ -38,6 +38,8 @@
             this.extract_timer = new System.Windows.Forms.Timer(this.components);
             this.partition_timer = new System.Windows.Forms.Timer(this.components);
             this.Scoretor = new System.Windows.Forms.Button();
+            this.weight_scores = new System.Windows.Forms.Button();
+            this.weight_timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -113,11 +115,27 @@
             this.Scoretor.UseVisualStyleBackColor = true;
             this.Scoretor.Click += new System.EventHandler(this.Scoretor_Click);
             // 
+            // weight_scores
+            // 
+            this.weight_scores.Location = new System.Drawing.Point(279, 171);
+            this.weight_scores.Name = "weight_scores";
+            this.weight_scores.Size = new System.Drawing.Size(75, 23);
+            this.weight_scores.TabIndex = 6;
+            this.weight_scores.Text = "weight_scores";
+            this.weight_scores.UseVisualStyleBackColor = true;
+            this.weight_scores.Click += new System.EventHandler(this.weight_scores_Click);
+            // 
+            // weight_timer
+            // 
+            this.weight_timer.Interval = 3000;
+            this.weight_timer.Tick += new System.EventHandler(this.weight_timer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 276);
+            this.Controls.Add(this.weight_scores);
             this.Controls.Add(this.Scoretor);
             this.Controls.Add(this.extract_info);
             this.Controls.Add(this.Domtext);
@@ -142,6 +160,8 @@
         private System.Windows.Forms.Timer extract_timer;
         private System.Windows.Forms.Timer partition_timer;
         private System.Windows.Forms.Button Scoretor;
+        private System.Windows.Forms.Button weight_scores;
+        private System.Windows.Forms.Timer weight_timer;
     }
 }
 

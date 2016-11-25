@@ -34,6 +34,7 @@ namespace Vextractor
         }
 
         public void sourcesample() {
+            /*
             //source.Add("VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black");
             //source.Add("Straight Talk Apple iPhone 5S 16GB 4G LTE Refurbished Prepaid Smartphone w/ Bonus $45 Service Plan");
             //source.Add("AT&T EL51203 DECT 6.0 Phone with Caller ID/Call Waiting, 2 Cordless Handsets, Silver");
@@ -50,7 +51,16 @@ namespace Vextractor
             source.Add("FIGO Atrium 5.5 - Dual Micro SIM Unlocked 16GB Smartphone - US & International GSM 4G");
             source.Add("$34.99 List price $37.68 Save $2.69 AT&T EL51203 DECT 6.0 Phone with Caller ID/Call Waiting, 2 Cordless Handsets, Silver ");
             source.Add("$368.99 Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
-            source.Add("$749.00 Straight Talk Apple iPhone 6S Plus 16GB 4G LTE Prepaid Smartphone ");
+            source.Add("$749.00 Straight Talk Apple iPhone 6S Plus 16GB 4G LTE Prepaid Smartphone ");*/
+            //以下是对相机的锚文本设定
+            source.Add("$499.00 List price $1299.99 Save $800.99 Canon EOS Rebel T5... ");
+            source.Add("$499.00 List price $1299.99 Save $800.99 Canon EOS Rebel T5 18MP DSLR Camera EFS 18-55mm & EF 75-300mm Four Lens Ultimate Bundle ");
+            source.Add("$155.99 Nikon Coolpix L330 Digital Camera (Black) - Factory Refurbished with 8GB Card Case Flex Tripod Kit ");
+            source.Add("$609.00 Canon EOS Rebel T5 Digital Camera SLR Kit With Canon EF-S 18-55mm IS II Canon 75-300mm III Lens 16 GB Card and Reade ");
+            source.Add("$488.00 Canon EOS Rebel T5 DSLR Camera with EF-S 18-55mm IS II Lens 32GB SD HC Memory Card Accessory Kit ");
+            source.Add("$359.98 AmScope 18MP USB3.0 Real-Time Live Video Microscope Digital Camera ");
+            source.Add("$1,199.00 Canon EOS 70D 20.2 MP Digital SLR Camera (Body Only) plus Deluxe Accessory Kit ");
+
         }
         public void computeAnchor()
         {

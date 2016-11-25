@@ -51,11 +51,27 @@
           <Property Name="mark" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="site" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
+        <EntityType Name="weight_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urlid" Type="int" />
+          <Property Name="site" Type="varchar" MaxLength="45" />
+          <Property Name="mark" Type="varchar" MaxLength="45" />
+          <Property Name="info" Type="varchar" MaxLength="10000" />
+          <Property Name="parent" Type="varchar" MaxLength="1000" />
+          <Property Name="current" Type="varchar" MaxLength="1000" />
+          <Property Name="child" Type="varchar" MaxLength="1000" />
+          <Property Name="score" Type="double" />
+          <Property Name="samplenumber" Type="int" />
+        </EntityType>
         <EntityContainer Name="htmlinfoModelStoreContainer">
           <EntitySet Name="concept_table" EntityType="Self.concept_table" Schema="htmlinfo" store:Type="Tables" />
           <EntitySet Name="original" EntityType="Self.original" Schema="htmlinfo" store:Type="Tables" />
           <EntitySet Name="scores" EntityType="Self.scores" Schema="htmlinfo" store:Type="Tables" />
           <EntitySet Name="urltable" EntityType="Self.urltable" Schema="htmlinfo" store:Type="Tables" />
+          <EntitySet Name="weight_info" EntityType="Self.weight_info" Schema="htmlinfo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -87,6 +103,7 @@
           <EntitySet Name="urltable" EntityType="Self.urltable" />
           <EntitySet Name="concept_table" EntityType="htmlinfoModel.concept_table" />
           <EntitySet Name="scores" EntityType="htmlinfoModel.scores" />
+          <EntitySet Name="weight_info" EntityType="htmlinfoModel.weight_info" />
         </EntityContainer>
         <EntityType Name="concept_table">
           <Key>
@@ -112,6 +129,21 @@
           <Property Name="score" Type="Double" />
           <Property Name="urlid" Type="Int32" />
           <Property Name="originalid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="weight_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urlid" Type="Int32" />
+          <Property Name="site" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mark" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="info" Type="String" MaxLength="10000" FixedLength="false" Unicode="false" />
+          <Property Name="parent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="current" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="child" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="score" Type="Double" />
+          <Property Name="samplenumber" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -165,6 +197,22 @@
                 <ScalarProperty Name="info" ColumnName="info" />
                 <ScalarProperty Name="mark" ColumnName="mark" />
                 <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="weight_info">
+            <EntityTypeMapping TypeName="htmlinfoModel.weight_info">
+              <MappingFragment StoreEntitySet="weight_info">
+                <ScalarProperty Name="samplenumber" ColumnName="samplenumber" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="child" ColumnName="child" />
+                <ScalarProperty Name="current" ColumnName="current" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="urlid" ColumnName="urlid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

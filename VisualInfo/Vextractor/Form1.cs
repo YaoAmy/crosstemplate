@@ -523,8 +523,8 @@ namespace Vextractor
 
         HtmlAttributeCollection attrs;//指定抽取的节点属性
         String tag;//指定抽取的节点标签
-        int extractid= 133808; //设置记录抽取id;对应urltable中；
-        int endid= 133817;//设置抽取结束的id；
+        int extractid = 133808; //设置记录抽取id;对应urltable中；
+        int endid = 133817;//设置抽取结束的id；
         int count2 = 0;
         String site;//记录来源
         String extracturl;//记录正在抽取的url
@@ -541,12 +541,12 @@ namespace Vextractor
             //  this.webBrowser1.Navigate("http://www.walmart.com/ip/VTech-CS6919-15-DECT-6.0-Expandable-Cordless-Phone-with-Caller-ID-and-Handset-Speakerphone-Red/45074431");
             nextextraturl(extractid);
 
-          //  partition_timer.Start();
+            //  partition_timer.Start();
         }
         private void nextextraturl(int id)
         {
             urltable ut = htmlpage.urltable.Find(id);
-            if (id >endid)   //大于不包括需要抽取的节点时程序退出
+            if (id > endid)   //大于不包括需要抽取的节点时程序退出
             {
                 Application.Exit();
             }
@@ -558,7 +558,7 @@ namespace Vextractor
                 mark = ut.mark;
                 this.webBrowser1.Navigate(extracturl);
 
-              //  Console.Out.WriteLine("解析的" + id + "对应url：" + ut.url);
+                //  Console.Out.WriteLine("解析的" + id + "对应url：" + ut.url);
                 extract_timer.Start(); //抽取timer启动；
             }
             else
@@ -581,7 +581,7 @@ namespace Vextractor
             }
             if (this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
             {
-                extract_timer.Stop();              
+                extract_timer.Stop();
                 //string strPath = @"D:\testtest.txt";
                 //string value = this.webBrowser1.Document.Body.OuterHtml;
 
@@ -593,7 +593,7 @@ namespace Vextractor
                 foreach (HtmlElement el in this.webBrowser1.Document.Body.GetElementsByTagName(tag))
                 {
                     bool isRight = true;
-                   // Console.Out.WriteLine("tag"+ tag +"attr:  "+ attrs[0].Value);
+                    // Console.Out.WriteLine("tag"+ tag +"attr:  "+ attrs[0].Value);
                     foreach (var item in attrs)
                     {
                         // Console.Out.WriteLine("name   " + item.Name);
@@ -613,25 +613,25 @@ namespace Vextractor
                     }
                     if (isRight)  //如果所有节点属性都匹配成功则进行抽取
                     {
-                         
-                        if (el.InnerText!=null&& el.InnerText.Trim().Length>0)
-                        {                           
+
+                        if (el.InnerText != null && el.InnerText.Trim().Length > 0)
+                        {
                             //int urlid = extractid;
                             //String info =Regex.Replace(el.InnerText.Trim(),"\\s+"," ");                           
                             ////site、extracturl已经在提取url是设置；
                             //String doc = this.webBrowser1.DocumentText;
                             //Console.Out.WriteLine("urlid:    "+urlid + "抽取信息： " + info + " 网站： " + site + "来源url " + extracturl + "分类： " + mark);
                             original orig = new original();
-                            orig.info= Regex.Replace(el.InnerText.Trim(), "\\s+", " ");
+                            orig.info = Regex.Replace(el.InnerText.Trim(), "\\s+", " ");
                             orig.mark = mark;
                             orig.site = site;
                             orig.url = extracturl;
                             orig.urlid = extractid;
-                            orig.doc= this.webBrowser1.DocumentText;
+                            orig.doc = this.webBrowser1.DocumentText;
                             htmlpage.original.Add(orig);
                             htmlpage.SaveChanges();
                         }
-                        
+
                     }
                 }
                 extractid++;
@@ -644,13 +644,13 @@ namespace Vextractor
         //______________________________________________________________________________________
         //                       分块部分
         SelectCandidate selector = new SelectCandidate();
-        //int originalid; //设置待匹配的概念节点的id
-        int urltableid= 136323; //指定待评价的url的id，original中的id。是urltable中的(不含).
-        int urltableendid= 140145;
+
+        int urltableid = 136323; //指定待评价的url的id，original中的id。是urltable中的(不含).
+        int urltableendid = 140145;
         String scoresite; //注意site、mark不是original中的site。是urltable中的site
         String scoremark;
-        int originalid=0;  //指定计算概念词的样本的id（第一个id不参与）；
-        int originalendid=404; //指定结束概念词计算的id；
+        int originalid = 0;  //指定计算概念词的样本的id（第一个id不参与）；
+        int originalendid = 404; //指定结束概念词计算的id；
         int count3 = 0;//用于加载记数
         String sampleString;
         private void selecturl() {
@@ -663,11 +663,11 @@ namespace Vextractor
             if (ut != null)
             {
                 count3 = 0;//解析下一页时，count3必须清零
-                scoresite = ut.site;               
+                scoresite = ut.site;
                 scoremark = ut.mark;
                 nextSample(); //选择下一个待抽取页面的同时，取出比对样本。
                 Console.Out.WriteLine("解析的" + urltableid + "对应url：" + ut.url);
-                this.webBrowser1.Navigate(ut.url);             
+                this.webBrowser1.Navigate(ut.url);
                 partition_timer.Start(); //抽取timer启动；
             }
             else
@@ -676,7 +676,6 @@ namespace Vextractor
                 originalid--; //该url没有计算，所以sample不用下一条；
                 selecturl();
             }
-
         }
         private void nextSample() //从original表格中得到样本用于概念计算,存放在类变量sampleString中;
         {
@@ -696,11 +695,11 @@ namespace Vextractor
                 originalid++;  //如果该id对应的urltable元组不存在则记录抽取的extractid自增，抽取下一条；
                 nextSample();
             }
-            
+
         }
         private String[] getTagandAttr(HtmlElement ele)
         {
-            String[] temp=new String[4];
+            String[] temp = new String[4];
             IHTMLElement e = (mshtml.IHTMLElement)ele.DomElement;
             HtmlElement parent = ele.Parent;
             HtmlElement firstchild = ele.FirstChild;
@@ -711,7 +710,7 @@ namespace Vextractor
             else {
                 temp[0] = "0";
             }
-            temp[1] = ele.TagName+" "+"class="+ ele.GetAttribute("className");
+            temp[1] = ele.TagName + " " + "class=" + ele.GetAttribute("className");
             if (firstchild != null)
             {
                 temp[2] = firstchild.TagName + " " + "class=" + firstchild.GetAttribute("className");
@@ -726,15 +725,15 @@ namespace Vextractor
             }
             else {
                 temp[0] = "0";
-            }          
-         //   Console.WriteLine(Regex.Match(ele.OuterHtml, @"\<.*?\>"));           
+            }
+            //   Console.WriteLine(Regex.Match(ele.OuterHtml, @"\<.*?\>"));           
             return temp;
         }
         private void Scoretor_Click(object sender, EventArgs e)
         {
             selecturl();
         }
-   
+
         private void partition_timer_Tick(object sender, EventArgs e)
         {
             count3++;
@@ -747,7 +746,7 @@ namespace Vextractor
                 return;
 
             }
-            if (count3>2&&this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
+            if (count3 > 2 && this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
             {
                 partition_timer.Stop();
                 Console.WriteLine(this.webBrowser1.Document.All.Count);
@@ -755,32 +754,36 @@ namespace Vextractor
                 int i = 0;
                 List<HtmlElement> candidateslist = new List<HtmlElement>();
                 //   HtmlElementCollection elecollection = this.webBrowser1.Document.Body.All;
-                if (this.webBrowser1.Document.All.Count < 100) return;
+                if (this.webBrowser1.Document.Body.All.Count < 100)
+                {
+                    selecturl();   //加载的节点数太少直接下一个；
+                    return;
+                }
                 foreach (HtmlElement ele in this.webBrowser1.Document.All)
                 {
-                    if (ele.Children.Count == 0&&ele.TagName!= "SCRIPT" && ele.TagName != "NOSCRIPT" && ele.TagName != "STYLE" && ele.InnerText != null)
+                    if (ele.Children.Count == 0 && ele.TagName != "SCRIPT" && ele.TagName != "NOSCRIPT" && ele.TagName != "STYLE" && ele.InnerText != null)
                     {
-                       
+
 
                         //Console.WriteLine(ele.TagName);
                         //Console.WriteLine(i+"   "+ele.InnerText);
-                        if (Regex.Replace(ele.InnerText,"\\s+","").Length>20) //长度太小的直接不要,不需要做去脚本处理的原因为本身为叶子节点
+                        if (Regex.Replace(ele.InnerText, "\\s+", "").Length > 20) //长度太小的直接不要,不需要做去脚本处理的原因为本身为叶子节点
                         {
                             getTagandAttr(ele);
                             candidateslist.Add(ele);
                             i++;
                         }
-                        
+
                     }
-                   
+
                 }
-                Console.WriteLine("总共选出的节点数目"+i); //总共的后选节点数目；
+                Console.WriteLine("总共选出的节点数目" + i); //总共的后选节点数目；
                 selector.SetCandidate(candidateslist); //重新设置候选节点，每次调用会清除之前的候选节点
                 //Console.WriteLine("当前样本 ：" + sampleString);
                 IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = selector.select(sampleString, 10);  //根据sampleString来计算概念分。
-                
-                    foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
-                    {
+
+                foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
+                {
                     try
                     {//将结果存入数据库中
                      // Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
@@ -796,9 +799,9 @@ namespace Vextractor
                         scores_table.firstchild = tag_attr[2];
                         scores_table.score = kvp.Value;
                         scores_table.original_current = tag_attr[3];
-                        htmlpage.scores.Add(scores_table);
-                        htmlpage.SaveChanges();
-                        //  Console.WriteLine("样本的id： "+originalid);
+                        //htmlpage.scores.Add(scores_table);
+                      //  htmlpage.SaveChanges();
+                          //Console.WriteLine("样本的id： "+originalid);
                         //  Console.WriteLine("样本： " + sampleString);
 
                     }
@@ -811,8 +814,134 @@ namespace Vextractor
             }
 
         }
+        //-----------------------------------------------------------------------------------------------
+        //  根据上下节点权重系数得出最相关的节点    权重打分部分
+        //亚马逊手机起始地址:(136322,140145]/tv(143960,147595]/camera(140145,143959]
+        int urltableid_weight = 136322; //指定待评价的url的id，original中的id。是urltable中的(不含).
+        int urltableendid_weight = 140145;
+        String site_weight; //注意site、mark不是original中的site。是urltable中的site
+        String mark_weight;
+        int count4 = 0;//用于加载记数
+        WeightSelector[] weightscorors = new WeightSelector[10];
+      //  WeightSelector weightscoror10 = new WeightSelector("amazon", "phone", 10);  //根据不同的样本数生成权重值
+      
+        public void setWeightscoror(String site,String mark,int num=10)
+        {
+            for (int i=0;i< num;i++)
+            {
+                weightscorors[i]= new WeightSelector(site, mark, (i+1)*10);
+             
 
+            }
+
+        }
        
+      
+        private void next_weighturl()
+        {
+            urltableid_weight++;
+            urltable ut = htmlpage.urltable.Find(urltableid_weight);
+            if (urltableid_weight > urltableendid_weight)   //大于不包括需要抽取的节点时程序退出
+            {
+                Application.Exit();
+            }
+            if (ut != null)
+            {
+                count4 = 0;//解析下一页时，count3必须清零
+                site_weight = ut.site;
+                mark_weight = ut.mark;
+                Console.Out.WriteLine("解析的" + urltableid_weight + "对应url：" + ut.url);
+                this.webBrowser1.Navigate(ut.url);
+                weight_timer.Start(); //抽取timer启动；
+            }
+            else
+            {
+                urltableid_weight++;  //如果该id对应的urltable元组不存在则记录抽取的extractid自增，抽取下一条；
+                next_weighturl();
+            }
+        }
+        private void weight_scores_Click(object sender, EventArgs e)
+        {
+            setWeightscoror("amazon", "phone", 10);
+            next_weighturl(); //下一个需要权重打分的网址
+        }
+
+        private void weight_timer_Tick(object sender, EventArgs e)
+        {
+            count4++;
+            if (count4 >= 35) //count >=35仍然没有加载完成则直接取下一进行抽取
+            {
+                weight_timer.Stop();
+                Console.Out.WriteLine("此处记得添加解析不成功是的下一页代码");
+                urltableid_weight++;
+                next_weighturl();
+                return;
+
+            }
+            if (count4 > 2 && this.webBrowser1.ReadyState == WebBrowserReadyState.Complete || this.webBrowser1.ReadyState == WebBrowserReadyState.Interactive)
+            {
+                weight_timer.Stop();
+                Console.WriteLine(this.webBrowser1.Document.All.Count);
+                Console.WriteLine(this.webBrowser1.Document.Body.All.Count);
+                int i = 0;
+                List<HtmlElement> candidateslist = new List<HtmlElement>();
+                if (this.webBrowser1.Document.Body.All.Count < 100)
+                {
+                    next_weighturl();   //加载的节点数太少直接下一个；
+                    return;
+                }
+                foreach (HtmlElement ele in this.webBrowser1.Document.All)
+                {
+                    if (ele.Children.Count == 0 && ele.TagName != "SCRIPT" && ele.TagName != "NOSCRIPT" && ele.TagName != "STYLE" && ele.InnerText != null)
+                    {
+
+                        if (Regex.Replace(ele.InnerText, "\\s+", "").Length > 20) //长度太小的直接不要,不需要做去脚本处理的原因为本身为叶子节点
+                        {
+                            candidateslist.Add(ele);
+                            i++;
+                        }
+                    }
+
+                }
+                Console.WriteLine("总共选出的节点数目" + i); //总共的后选节点数目；
+                 //重新设置候选节点，每次调用会清除之前的候选节点
+                for (int n = 0; n < 10; n++)
+                {
+                    weightscorors[n].SetCandidate(candidateslist);
+                    IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = weightscorors[n].select(6);  //根据sampleString来计算概念分,取排名前6的作为抽取的节点。
+                    foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
+                    {
+                        try
+                        {//将结果存入数据库中
+                         // Console.Write(kvp.Key + "：" + kvp.Value + "<br />");
+                            String[] tag_attr = getTagandAttr(kvp.Key);
+                            weight_info weight_table = new weight_info();
+
+                            weight_table.urlid = urltableid_weight;
+
+                            weight_table.site = site_weight;
+                            weight_table.mark = mark_weight;
+                            weight_table.info = HtmlElementprocess.getElementString(kvp.Key);
+                            weight_table.parent = tag_attr[0];
+                            weight_table.current = tag_attr[1];
+                            weight_table.child = tag_attr[2];
+                            weight_table.score = kvp.Value;
+                            weight_table.samplenumber= (n+1)*10;
+                            htmlpage.weight_info.Add(weight_table);
+                            htmlpage.SaveChanges();
+                            //  Console.WriteLine("样本的id： "+originalid);
+                            //  Console.WriteLine("样本： " + sampleString);
+
+                        }
+                        catch (UriFormatException)
+                        {
+
+                        }
+                    }
+                }
+                next_weighturl();
+            }
+        }
     }
 }
 

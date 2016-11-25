@@ -104,6 +104,11 @@
     <Compile Include="urltable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Weightadjust.cs" />
+    <Compile Include="WeightSelector.cs" />
+    <Compile Include="weight_info.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

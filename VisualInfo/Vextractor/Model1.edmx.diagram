@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="htmlinfoModel.urltable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="htmlinfoModel.concept_table" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="htmlinfoModel.scores" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="htmlinfoModel.weight_info" Width="1.5" PointX="5.375" PointY="3.75" />
         
       </Diagram>
     </edmx:Diagrams>

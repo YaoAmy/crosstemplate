@@ -51,5 +51,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="weight_info">
+      <EntityTypeMapping TypeName="htmlinfoModel.weight_info">
+        <MappingFragment StoreEntitySet="weight_info">
+          <ScalarProperty Name="samplenumber" ColumnName="samplenumber" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="child" ColumnName="child" />
+          <ScalarProperty Name="current" ColumnName="current" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="site" ColumnName="site" />
+          <ScalarProperty Name="urlid" ColumnName="urlid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -26,6 +26,7 @@
     <EntitySet Name="urltable" EntityType="Self.urltable" />
     <EntitySet Name="concept_table" EntityType="htmlinfoModel.concept_table" />
     <EntitySet Name="scores" EntityType="htmlinfoModel.scores" />
+    <EntitySet Name="weight_info" EntityType="htmlinfoModel.weight_info" />
   </EntityContainer>
   <EntityType Name="concept_table">
     <Key>
@@ -51,5 +52,20 @@
     <Property Name="score" Type="Double" />
     <Property Name="urlid" Type="Int32" />
     <Property Name="originalid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="weight_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urlid" Type="Int32" />
+    <Property Name="site" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="mark" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="10000" FixedLength="false" Unicode="false" />
+    <Property Name="parent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="current" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="child" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="score" Type="Double" />
+    <Property Name="samplenumber" Type="Int32" />
   </EntityType>
 </Schema>

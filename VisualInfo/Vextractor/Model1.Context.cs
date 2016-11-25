@@ -29,5 +29,6 @@ namespace Vextractor
         public DbSet<urltable> urltable { get; set; }
         public DbSet<concept_table> concept_table { get; set; }
         public DbSet<scores> scores { get; set; }
+        public DbSet<weight_info> weight_info { get; set; }
     }
 }

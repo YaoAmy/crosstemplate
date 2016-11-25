@@ -46,10 +46,26 @@
     <Property Name="mark" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="site" Type="varchar" MaxLength="45" Nullable="false" />
   </EntityType>
+  <EntityType Name="weight_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urlid" Type="int" />
+    <Property Name="site" Type="varchar" MaxLength="45" />
+    <Property Name="mark" Type="varchar" MaxLength="45" />
+    <Property Name="info" Type="varchar" MaxLength="10000" />
+    <Property Name="parent" Type="varchar" MaxLength="1000" />
+    <Property Name="current" Type="varchar" MaxLength="1000" />
+    <Property Name="child" Type="varchar" MaxLength="1000" />
+    <Property Name="score" Type="double" />
+    <Property Name="samplenumber" Type="int" />
+  </EntityType>
   <EntityContainer Name="htmlinfoModelStoreContainer">
     <EntitySet Name="concept_table" EntityType="Self.concept_table" Schema="htmlinfo" store:Type="Tables" />
     <EntitySet Name="original" EntityType="Self.original" Schema="htmlinfo" store:Type="Tables" />
     <EntitySet Name="scores" EntityType="Self.scores" Schema="htmlinfo" store:Type="Tables" />
     <EntitySet Name="urltable" EntityType="Self.urltable" Schema="htmlinfo" store:Type="Tables" />
+    <EntitySet Name="weight_info" EntityType="Self.weight_info" Schema="htmlinfo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

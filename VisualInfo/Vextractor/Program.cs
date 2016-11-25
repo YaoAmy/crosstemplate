@@ -17,8 +17,12 @@ namespace Vextractor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new Form1());
-
+            Application.Run(new Form1());
+            //Weightadjust weightadjuster = new Weightadjust();
+            //weightadjuster.computeParentweight("amazon","phone");
+            //weightadjuster.computeCurrentweight("amazon", "phone");
+            //weightadjuster.computeFirstchildweight("amazon", "phone");
+           // weightadjuster.show();
             //     String[] symbolsource = { "@", "%", "#", "¥", "$", "℃", "GB", "&", "gb", "mm", "-", "_" };
             // String temp = "Canon EOS Rebel T5 DSLR Camera with EF-S 18-55mm IS II & 75-300mm Zoom Lens and 32GB Accessory Bu";
             //String temp2 = "VTech CS6919 DECT 6.0 Expandable Cordless Phone with Caller ID and Handset Speakerphone, Silver/Black";
@@ -30,12 +34,12 @@ namespace Vextractor
             //   Candidatescore cs = new Candidatescore();
             //    cs.setCandidate();
             //     cs.computeScores();
-           // String tem = " fdfdf  f4 out of stars 5 fdf";
-           // Console.Write(Regex.Replace(tem,@"\d* out of stars \d*",""));
+            // String tem = " fdfdf  f4 out of stars 5 fdf*";
+            //Console.Write(Regex.Replace(tem,"\\*",""));
             //if (m.Success) { Console.WriteLine(m.Value); }
             //else
             //{ Console.WriteLine("0"); }
-            
+
             //List<double> V1 = new List<double>();
             //V1.Add(0);
             //V1.Add(0);

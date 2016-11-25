@@ -32,7 +32,7 @@ namespace Vextractor
             candscortor.setanchor(); 
             SetCandidate(leaf_nodes);
         }
-        public IEnumerable<KeyValuePair<HtmlElement, double>> select(String sampletext,int num) //对candidate打分,num指返回排名前num的节点；
+        public IEnumerable<KeyValuePair<HtmlElement, double>> select(String sampletext,int num) //sampletext为概念的来源，对candidate打分,num指返回排名前num的节点；
         {
             DateTime beforDT = System.DateTime.Now;            
             Console.Write("开始计算评分");
