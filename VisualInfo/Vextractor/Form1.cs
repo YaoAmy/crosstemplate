@@ -645,7 +645,7 @@ namespace Vextractor
         //                       分块部分
         SelectCandidate selector = new SelectCandidate();
 
-        int urltableid = 136323; //指定待评价的url的id，original中的id。是urltable中的(不含).
+        int urltableid = 136656; //指定待评价的url的id，original中的id。是urltable中的(不含).
         int urltableendid = 140145;
         String scoresite; //注意site、mark不是original中的site。是urltable中的site
         String scoremark;
@@ -705,15 +705,15 @@ namespace Vextractor
             HtmlElement firstchild = ele.FirstChild;
             if (parent != null)
             {
-                temp[0] = parent.TagName + " " + "class=" + parent.GetAttribute("className");
+                temp[0] = Regex.Replace(parent.TagName + " " + "class=" + parent.GetAttribute("className"), "\\s+", " ") ;
             }
             else {
                 temp[0] = "0";
             }
-            temp[1] = ele.TagName + " " + "class=" + ele.GetAttribute("className");
+            temp[1] = Regex.Replace(ele.TagName + " " + "class=" + ele.GetAttribute("className"), "\\s+", " ");
             if (firstchild != null)
             {
-                temp[2] = firstchild.TagName + " " + "class=" + firstchild.GetAttribute("className");
+                temp[2] = Regex.Replace(firstchild.TagName + " " + "class=" + firstchild.GetAttribute("className"), "\\s+", " ");
             }
             else {
                 temp[2] = "0";
@@ -721,7 +721,7 @@ namespace Vextractor
             Match m = Regex.Match(ele.OuterHtml, @"\<.*?\>");
             if (m.Success)
             {
-                temp[3] = m.Value;
+                temp[3] = Regex.Replace(m.Value, "\\s+", " ");
             }
             else {
                 temp[0] = "0";
@@ -780,8 +780,7 @@ namespace Vextractor
                 Console.WriteLine("总共选出的节点数目" + i); //总共的后选节点数目；
                 selector.SetCandidate(candidateslist); //重新设置候选节点，每次调用会清除之前的候选节点
                 //Console.WriteLine("当前样本 ：" + sampleString);
-                IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = selector.select(sampleString, 10);  //根据sampleString来计算概念分。
-
+                IEnumerable<KeyValuePair<HtmlElement, double>> dicSort = selector.select(sampleString,0,false);  //根据sampleString来计算概念分。设为false表示所有评分结果均写入数据库中
                 foreach (KeyValuePair<HtmlElement, double> kvp in dicSort)
                 {
                     try
@@ -793,7 +792,7 @@ namespace Vextractor
                         scores_table.originalid = originalid;
                         scores_table.site = scoresite;
                         scores_table.mark = scoremark;
-                        scores_table.info = HtmlElementprocess.getElementString(kvp.Key);
+                        scores_table.info = Regex.Replace(HtmlElementprocess.getElementString(kvp.Key), "\\s+", " ");
                         scores_table.parent = tag_attr[0];
                         scores_table.current = tag_attr[1];
                         scores_table.firstchild = tag_attr[2];
@@ -805,9 +804,9 @@ namespace Vextractor
                         //  Console.WriteLine("样本： " + sampleString);
 
                     }
-                    catch (UriFormatException)
+                    catch (Exception error)
                     {
-
+                        Console.WriteLine(error.Data);
                     }
                 }
                 selecturl();

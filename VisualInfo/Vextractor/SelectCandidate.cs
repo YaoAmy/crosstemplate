@@ -32,7 +32,7 @@ namespace Vextractor
             candscortor.setanchor(); 
             SetCandidate(leaf_nodes);
         }
-        public IEnumerable<KeyValuePair<HtmlElement, double>> select(String sampletext,int num) //sampletext为概念的来源，对candidate打分,num指返回排名前num的节点；
+        public IEnumerable<KeyValuePair<HtmlElement, double>> select(String sampletext,int num,bool limit) //sampletext为概念的来源，对candidate打分,num指返回排名前num的节点；
         {
             DateTime beforDT = System.DateTime.Now;            
             Console.Write("开始计算评分");
@@ -149,11 +149,21 @@ namespace Vextractor
                       
                 }               
             }
-            var dicSort = (from objDic in candidates orderby objDic.Value descending select objDic).Take(num);
-            DateTime afterDT = System.DateTime.Now;
-            TimeSpan ts = afterDT.Subtract(beforDT);
-            Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
-            return dicSort;
+            if (limit==true) {
+                var dicSort = (from objDic in candidates orderby objDic.Value descending select objDic).Take(num);
+                DateTime afterDT = System.DateTime.Now;
+                TimeSpan ts = afterDT.Subtract(beforDT);
+                // Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+                return dicSort;
+            }
+            else {
+                var dicSort = (from objDic in candidates orderby objDic.Value descending select objDic);
+                DateTime afterDT = System.DateTime.Now;
+                TimeSpan ts = afterDT.Subtract(beforDT);
+                // Console.WriteLine("DateTime总共花费{0}ms.", ts.TotalMilliseconds);
+                return dicSort;
+            }
+            
         }
 
         private void DictonarySortandSave(Dictionary<HtmlElement, double> dic,int num)

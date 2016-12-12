@@ -45,6 +45,7 @@ namespace Vextractor
             //source.Add("iPhone 7 Case, AiSpeed Premium TPU [Soft Series] Flexible Soft Transparent Clear Back");
             //source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
             // source.Add("Techniroux 20000mah Portable Charger with Inbuilt Flash Lights, Led Display and 3 USB");
+           //手机
             source.Add("$399.00 Straight Talk Apple iPhone 6 Plus 16GB 4G LTE Prepaid Smartphone ");
             source.Add("Straight Talk Apple iPhone 5S 16GB 4G LTE Refurbished Prepaid Smartphone w/ Bonus $45 Service Plan");
             source.Add("$45.00 (Email Delivery) Straight Talk Monthly Plan Unlimited 30 Access Days $45 ");
@@ -60,7 +61,14 @@ namespace Vextractor
             source.Add("$488.00 Canon EOS Rebel T5 DSLR Camera with EF-S 18-55mm IS II Lens 32GB SD HC Memory Card Accessory Kit ");
             source.Add("$359.98 AmScope 18MP USB3.0 Real-Time Live Video Microscope Digital Camera ");
             source.Add("$1,199.00 Canon EOS 70D 20.2 MP Digital SLR Camera (Body Only) plus Deluxe Accessory Kit ");
-
+            //tv
+            source.Add("$159.99 List price $299.99 Save $140.00 Sceptre 32\" Class LED 720p 60Hz HDTV(2.35\" ultra-slim) with Built-in DVD Player, E325BD-M, Black  ");
+            source.Add("$348.00 List price $699.99 Save $351.99 Sony UHPH1 UHD 4K...  ");
+            source.Add("$118.00 VIZIO D24hn-D1 24\" 720p 60Hz LED HDTV  ");
+            source.Add("$9.98 List price $40.00 Save $30.02 Low - Profile TV Wall Mount for 19\"-60\" TVs with HDMI Cable, UL Certified ") ;
+            source.Add("$278.00 Was $328.00 Save $50.00 VIZIO D40-D1 40\" 1080p 120Hz LED Smart HDTV ");
+            source.Add("$198.00 Was $228.00 Save $30.00 VIZIO D32x-D1 32\" 1080p 60Hz LED Smart HDTV ");
+            source.Add("$147.99 List price $419.99 Save $272.00 SAMSUNG 32\" 4000 Series - HD LED TV - 720p, 60MR(Model#: UN32J4000) ");
         }
         public void computeAnchor()
         {
